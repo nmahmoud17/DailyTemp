@@ -21,6 +21,10 @@ public class Main {
 
         Temperature[] dailyAverageTemp = new Temperature[averageTempArraySize];
 
+        double sum = 0;
+        double avg = 0;
+
+
         for (int i=0; i <averageTempArraySize; i++) {
             System.out.println("Please enter the daily average temperature " +
                     "(in degrees Fahrenheit) for the last 7 days  ");
@@ -29,17 +33,18 @@ public class Main {
 
             int userInput = reader.nextInt();
 
-            dailyAverageTemp[i].setFahrenheit((double)userInput);
+            dailyAverageTemp[i].setFahrenheit(userInput);
             dailyAverageTemp[i].getFahrenheit();
 
-            System.out.println(dailyAverageTemp);
+            System.out.println(dailyAverageTemp[i].getFahrenheit());
 
-
-
-
+            sum += i;
         }
 
+        avg = sum/averageTempArraySize;
 
+        System.out.println(sum);
+        System.out.println(avg);
 
 
     }

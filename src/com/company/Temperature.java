@@ -2,19 +2,19 @@ package com.company;
 
 public class Temperature {
 
-    private double Fahrenheit;
+    private double fahrenheit;
     private double celsius;
 
-    public void setFahrenheit(double fahrenheitTemp) {
-        Fahrenheit = fahrenheitTemp;
+    public void setFahrenheit(double userFahrenheitTemp) {
+        fahrenheit = userFahrenheitTemp;
     }
 
     public double getFahrenheit(){
-        return Fahrenheit;
+        return fahrenheit;
     }
 
     public double calculateFahrenheitCelsius() {
-        celsius = (Fahrenheit - 32) / 1.8;
+        celsius = (fahrenheit - 32) / 1.8;
         return celsius;
 
     }
