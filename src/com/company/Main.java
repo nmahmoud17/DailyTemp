@@ -3,6 +3,7 @@ package com.company;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.TooManyListenersException;
 
 public class Main {
 
@@ -21,15 +22,17 @@ public class Main {
 
         Temperature[] dailyAverageTemp = new Temperature[averageTempArraySize];
 
-        double sum = 0;
-        double avg = 0;
+        double sumF = 0;
+        double avgF = 0;
+        double avgC = 0;
+        double sumC = 0;
 
 
-        for (int i=0; i <averageTempArraySize; i++) {
+        for (int i = 0; i < averageTempArraySize; i++) {
             System.out.println("Please enter the daily average temperature " +
                     "(in degrees Fahrenheit) for the last 7 days  ");
 
-            dailyAverageTemp[i]= new Temperature();
+            dailyAverageTemp[i] = new Temperature();
 
             int userInput = reader.nextInt();
 
@@ -38,16 +41,42 @@ public class Main {
 
             System.out.println(dailyAverageTemp[i].getFahrenheit());
 
-            sum += i;
+            sumF += i;
+
         }
 
-        avg = sum/averageTempArraySize;
+        System.out.println("Do you prefer results in Fahrenheit or Celsius?");
+        System.out.println("1. F");
+        System.out.println("2. C");
 
-        System.out.println(sum);
-        System.out.println(avg);
+        int choice = reader.nextInt();
+
+        //F
+        if (choice == 1) {
+
+            avgF = sumF / averageTempArraySize;
+
+            System.out.println("Your weekly average " + avgF);
+        }
+        //C
+        else if (choice == 2) {
+            //For each loop to convert to C
+            for (Temperature i : dailyAverageTemp) {
+                double tempC = i.calculateFahrenheitCelsius();
+                sumC += tempC;
+                avgC = sumC / averageTempArraySize;
+
+                System.out.println("Your temperature in Celcius: " + tempC);
+                System.out.println("The average of your week's temperature" + avgC);
+            }
+
+        } else {
+            System.out.println("Make sure to choose 1 or 2! ");
+
+        }
 
 
     }
 
 
-    }
+}
